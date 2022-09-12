@@ -1,0 +1,8 @@
+---
+# deploy homer instance - k8s tooling
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  user: root
+  roles:
+    - homer

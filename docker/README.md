@@ -58,5 +58,5 @@ docker run \
   --publish 50000:50000 \
   --volume jenkins-data:/var/jenkins_home \
   --volume jenkins-docker-certs:/certs/client:ro \
-  tk-jenkins:1.0.0
+  jenkins/jenkins:lts-alpine-jdk17
 ```
