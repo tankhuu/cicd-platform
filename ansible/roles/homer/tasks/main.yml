@@ -24,6 +24,10 @@
         from_port: 22
         to_port: 22
         cidr_ip: 0.0.0.0/0
+      - proto: tcp
+        from_port: 8080
+        to_port: 8080
+        cidr_ip: 0.0.0.0/0
     rules_egress:
       - proto: all
         cidr_ip: 0.0.0.0/0
@@ -46,6 +50,8 @@
     state: running
     tags:
       Name: homer
+      Type: template
+      Service: "CI/CD Platform"
   register: homer_instance
 # - name: Add instance to host group
 #   add_host:

@@ -30,6 +30,27 @@ Resembles the Official Jenkins Docker Image with some custom steps to provide Co
     - Mobile
   + Tooling
 
+## Get Plugin List
+
+>  Go to https://jenkins-url/script
+
+```
+Jenkins.instance.pluginManager.plugins.each{
+  plugin ->
+    println ("${plugin.getShortName()}:${plugin.getVersion()}")
+}
+
+# Remove last line of result (array)
+```
+
+## Install list of plugin from file
+
+```
+jenkins-plugin-cli --plugin-file /usr/share/jenkins/ref/plugins.txt
+```
+
+
+
 ## Build
 
 ```
@@ -46,6 +67,7 @@ docker build -t jackiekhuu/jenkins:$version .
 ## Run locally
 
 ```
+docker network create jenkins
 docker run \
   --name jenkins \
   --restart=on-failure \
