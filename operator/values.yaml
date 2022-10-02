@@ -14,7 +14,7 @@ jenkins:
 
   # name of resource
   # The pod name will be jenkins-<name> (name will be set as suffix)
-  name: jenkins
+  name: homer
 
   # namespace is the namespace where the resources will be deployed
   # It's not recommended to use default namespace
@@ -118,13 +118,13 @@ jenkins:
   # For seed job creation tutorial, check https://jenkinsci.github.io/kubernetes-operator/docs/getting-started/latest/configuring-seed-jobs-and-pipelines/
   # Example:
   #
-  # seedJobs:
-  #  - id: jenkins-operator
-  #    targets: "cicd/jobs/*.jenkins"
-  #    description: "Jenkins Operator repository"
-  #    repositoryBranch: master
-  #    repositoryUrl: https://github.com/jenkinsci/kubernetes-operator.git
-  seedJobs: []
+  seedJobs:
+    - id: jenkins-operator
+      targets: "cicd/jobs/*.jenkins"
+      description: "Jenkins Operator repository"
+      repositoryBranch: master
+      repositoryUrl: https://github.com/jenkinsci/kubernetes-operator.git
+  # seedJobs: []
 
   # SeedJobAgentImage defines the image that will be used by the seed job agent. If not defined jenkins/inbound-agent:4.9-1 will be used.
   seedJobAgentImage: ""
@@ -177,7 +177,7 @@ jenkins:
     initialDelaySeconds: 100
     periodSeconds: 10
     successThreshold: 1
-    timeoutSeconds: 30
+    timeoutSeconds: 360
   # ReadinessProbe for Jenkins Master pod
   readinessProbe:
     failureThreshold: 60
@@ -188,7 +188,7 @@ jenkins:
     initialDelaySeconds: 120
     periodSeconds: 10
     successThreshold: 1
-    timeoutSeconds: 30
+    timeoutSeconds: 360
 
   # backup is section for configuring operator's backup feature
   # By default backup feature is enabled and pre-configured
